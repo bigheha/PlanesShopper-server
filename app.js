@@ -1,5 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
+
+import Product from "./models/mtg-product";
+
 const app = express();
 
 const port = 3000;
@@ -14,6 +17,12 @@ mongoose
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
+});
+
+app.post("/create-product", (req, res) => {
+  const body = req.body;
+  const newProduct = Product.create(body);
+  newProduct.save();
 });
 
 app.listen(port, () => {

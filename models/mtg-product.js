@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const mtgProduct = new Schema({
+const Product = new Schema({
   title: {
     type: String,
     required: true,
@@ -18,4 +18,14 @@ const mtgProduct = new Schema({
     type: Number,
     required: true,
   },
+  photo: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    required: true,
+  },
 });
+
+export default Product;
