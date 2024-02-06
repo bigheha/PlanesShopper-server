@@ -12,7 +12,9 @@
 
 #### GET /products
 
-## TODO, currently returns the **first** document in **products** collection, should return **all** documents in **products** collection.
+TODO, currently returns the **first** document in **products** collection, should return **all** documents in **products** collection.
+
+---
 
 #### POST /products
 
@@ -27,7 +29,9 @@ Creates a **single** document for **products** collection. To create this docume
     "photo": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAeAB4AAD/2wCEAAQEBAQEBAUFBQU…",
     "type": "booster-draft"
 
-## }
+}
+
+---
 
 #### PATCH /products
 
@@ -41,7 +45,9 @@ Updates a **single** document in **products** collection. To update a document, 
         "snippet": "A mystery to kill for"
     }
 
-## }
+}
+
+---
 
 #### DELETE /products
 
