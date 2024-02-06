@@ -17,14 +17,7 @@ mongoose
 
 app.use(express.json());
 
-app.get("/products/", (req, res) => {
-  Product.find()
-    .sort({ createdAt: -1 })
-    .then((result) => res.json(result))
-    .catch((err) => console.log(err));
-});
-
-app.post("/products/create", async (req, res) => {
+app.post("/products", async (req, res) => {
   console.log("endpoint reached!");
   try {
     const body = req.body;
@@ -33,6 +26,26 @@ app.post("/products/create", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+app.get("/products", (req, res) => {
+  Product.find()
+    .sort({ createdAt: -1 })
+    .then((result) => res.json(result))
+    .catch((err) => console.log(err));
+});
+
+app.patch("/products", (req, res) => {
+  const _id = req.body.id;
+  const changes = req.body.changes;
+  Product.updateOne({ _id }, changes);
+});
+
+app.delete("/products", (req, res) => {
+  console.log("delete endpoint reached");
+  const _id = req.body.id;
+  console.log(_id);
+  Product.findOneAndDelete({ _id });
 });
 
 app.listen(port, () => {
