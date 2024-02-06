@@ -1,8 +1,8 @@
-#### Backend for PlanesShopper
+# Backend for PlanesShopper
 
 ---
 
-### Technologies
+## Technologies
 
 - Node.js, Express.js;
 - MongoDB, Mongoose;
@@ -10,17 +10,17 @@
 
 ---
 
-### API usage
+## API usage
 
 ---
 
-## /producs endpoints
+### /producs endpoints
 
-# GET /products
+#### GET /products
 
 TODO, currently returns the **first** document in **products** collection, should return **all** documents in **products** collection.
 
-# POST /products
+#### POST /products
 
 Creates a **single** document for **products** collection. To create this document, all fields of Product schema should be provided:
 
@@ -37,7 +37,7 @@ Creates a **single** document for **products** collection. To create this docume
 
 }
 
-# PATCH /products
+#### PATCH /products
 
 Updates a **single** document in **products** collection. To update a document, provide a document's **\_id** and fields to change in changes **object**:
 
@@ -55,7 +55,7 @@ Updates a **single** document in **products** collection. To update a document, 
 
 ---
 
-# DELETE /products
+#### DELETE /products
 
 Deletes a **single** document from **products** collection. To use, provide an \_id of a document to be deleted:
 
