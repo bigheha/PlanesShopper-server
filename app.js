@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 
 import Product from "./models/product.js";
 
@@ -17,6 +18,12 @@ mongoose
 
 app.use(express.json());
 
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 app.post("/products", async (req, res) => {
   console.log("endpoint reached!");
   try {
@@ -31,7 +38,10 @@ app.post("/products", async (req, res) => {
 app.get("/products", (req, res) => {
   Product.find()
     .sort({ createdAt: -1 })
-    .then((result) => res.json(result))
+    .then((result) => {
+      console.log(result);
+      res.json(result);
+    })
     .catch((err) => console.log(err));
 });
 

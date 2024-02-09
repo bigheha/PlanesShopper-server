@@ -8,11 +8,13 @@
 
 ## API usage
 
+Below are descriptions of this server's endpoints and examples of request bodys for them.
+
 ### /producs endpoints
 
 #### GET /products
 
-TODO, currently returns the **first** document in **products** collection, should return **all** documents in **products** collection.
+Return **all** documents from **products** collection.
 
 ---
 
