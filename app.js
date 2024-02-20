@@ -1,3 +1,4 @@
+// import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -8,11 +9,8 @@ const app = express();
 
 const port = 3000;
 
-const dbURI =
-  "mongodb+srv://lysakihor4221:qwerty322@cluster0.qzqitn8.mongodb.net/PlanesShopperDB?retryWrites=true&w=majority";
-
 mongoose
-  .connect(dbURI)
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("connected to DB"))
   .catch((err) => console.log(err));
 
