@@ -5,8 +5,8 @@ import "dotenv/config.js";
 import cors from "cors";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import Product from "./models/product.js";
 import User from "./models/user.js";
+import productRouter from "./routes/productsRoutes.js"
 
 const app = express();
 
@@ -24,6 +24,8 @@ app.use(
     origin: "*",
   })
 );
+
+app.use('/products', productRouter);
 
 app.post("/register", async (req, res) => {
   try {
@@ -69,39 +71,6 @@ app.post("/login", async (req, res) => {
   } else {
     res.sendStatus(401);
   }
-});
-
-app.post("/products", async (req, res) => {
-  try {
-    const body = req.body;
-    const newProduct = await Product.create(body);
-    newProduct.save();
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-app.get("/products", (req, res) => {
-  Product.find()
-    .sort({ createdAt: -1 })
-    .then((result) => {
-      console.log(result);
-      res.json(result);
-    })
-    .catch((err) => console.log(err));
-});
-
-app.patch("/products", (req, res) => {
-  const _id = req.body.id;
-  const changes = req.body.changes;
-  Product.updateOne({ _id }, changes);
-});
-
-app.delete("/products", (req, res) => {
-  console.log("delete endpoint reached");
-  const _id = req.body.id;
-  console.log(_id);
-  Product.findOneAndDelete({ _id });
 });
 
 app.listen(port, () => {
