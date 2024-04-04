@@ -25,8 +25,15 @@ productRouter.get("/getAll", (req, res) => {
 productRouter.patch("/changeOne", (req, res) => {
     console.log('endpoint reached');
     const _id = req.body.id;
-    const changes = req.body.changes;
-    Product.updateOne({ _id }, changes);
+    console.log(req.body, _id);
+    Product.findOneAndUpdate(
+        {_id}, 
+        {$set: {amount: req.body.amount}},
+        )
+        .catch(err => {
+            console.log(err);
+            res.status(500).send("Error updating product");
+        })
 });
   
 productRouter.delete("/deleteOne", (req, res) => {
